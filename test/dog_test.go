@@ -14,7 +14,7 @@ func TestDog(t *testing.T) {
 	t.Run(`Dog is valid`, func(t *testing.T) {
 		dog := entity.Dog{
 			Name:   "Tong",
-			Weight: 0,
+			Weight: 10,
 		}
 		ok, err := govalidator.ValidateStruct(dog)
 		if err != nil {
