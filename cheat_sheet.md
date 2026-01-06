@@ -40,7 +40,7 @@ Tag: variablewidth      -> ผสมทั้ง Full และ Half
 Tag: stringlength(n|m)  -> ความยาวตัวอักษร n ถึง m
 Tag: runelength(n|m)    -> ความยาวตัวอักษร (นับ Unicode/ภาษาไทย เป็น 1 ตัว) ⭐ แนะนำอันนี้ถ้าใช้ภาษาไทย
 Tag: in(a|b|c)          -> ต้องมีค่าตรงกับ a หรือ b หรือ c
-Tag: matches(regex)     -> ตรงตาม Regular Expression
+Tag: matches(regex)     -> ตรงตาม Regular Expression `valid:"matches(^P\\d{4}$)~SKU invalid format"` ^pขึ้นต้น \\d{5}$
 
 --------------------------------------------------------------------------------
 [ 4. อินเทอร์เน็ต & เครือข่าย (Network) ]

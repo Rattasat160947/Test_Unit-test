@@ -13,7 +13,7 @@ func TestCustomer(t *testing.T) {
 	t.Run(`Customer is valid`, func(t *testing.T) {
 		customer := entity.Customer{
 			Username: "Rattasat",
-			Email:    "B6640583@gmail.com",
+			Email:    "B6640583@Example.com",
 			Gender:   "Male",
 			Age:      20,
 		}
@@ -21,5 +21,30 @@ func TestCustomer(t *testing.T) {
 		ok, err := govalidator.ValidateStruct(customer)
 		g.Expect(ok).To(BeTrue())
 		g.Expect(err).To(BeNil())
+	})
+	t.Run(`Username must be betweent 5 and 20 characters`,func(t *testing.T){
+		customer := entity.Customer{
+			Username: "Rat", // ผิดตรงนี้
+			Email:    "B6640583@Example.com",
+			Gender:   "Male",
+			Age:      20,
+		}
+		ok,err := govalidator.ValidateStruct(customer)
+		g.Expect(ok).NotTo(BeTrue())
+		g.Expect(err).NotTo(BeNil())
+		g.Expect(err.Error()).To(Equal("Username must be between 5 and 20 characters"))
+	})
+
+	t.Run(`Invalid email format`,func(t *testing.T){
+		customer := entity.Customer{
+			Username: "Rattasat",
+			Email:    "B6640583", // ผิดตรงนี้
+			Gender:   "Male",
+			Age:      20,
+		}
+		ok,err := govalidator.ValidateStruct(customer)
+		g.Expect(ok).NotTo(BeTrue())
+		g.Expect(err).NotTo(BeNil())
+		g.Expect(err.Error()).To(Equal("Invalid email format"))
 	})
 }
